@@ -1,4 +1,5 @@
 // A standalone comment is a comment which is not attached to any kind of node
+// Followed by a second comment
 
 // This comes from Terraform, as a test
 variable "foo" {
@@ -32,5 +33,5 @@ variable = {
 
 // lead comment
 foo {
-	bar = "fatih" // line comment 2 
+	bar = "fatih" // line comment 2
 } // line comment 3

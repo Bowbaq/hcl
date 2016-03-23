@@ -29,7 +29,10 @@ func (c *Config) Fprint(output io.Writer, node ast.Node) error {
 
 	p.collectComments(node)
 
-	if _, err := output.Write(p.unindent(p.output(node))); err != nil {
+	buf := bytes.TrimRight(p.unindent(p.output(node)), "\n")
+	buf = append(buf, '\n')
+
+	if _, err := output.Write(buf); err != nil {
 		return err
 	}
 

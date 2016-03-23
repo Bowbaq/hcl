@@ -112,7 +112,7 @@ func (p *printer) output(n interface{}) []byte {
 		for {
 			// TODO(arslan): refactor below comment printing, we have the same in objectType
 			for _, c := range p.standaloneComments {
-				for _, comment := range c.List {
+				for cindex, comment := range c.List {
 					if index != len(t.Items) {
 						nextItem = t.Items[index].Pos()
 					} else {
@@ -128,7 +128,8 @@ func (p *printer) output(n interface{}) []byte {
 						buf.WriteString(comment.Text)
 
 						buf.WriteByte(newline)
-						if index != len(t.Items) {
+
+						if cindex+1 == len(c.List) {
 							buf.WriteByte(newline)
 						}
 					}
